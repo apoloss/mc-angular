@@ -10,14 +10,14 @@
   </head>
   <body>
   	<div class="container" ng-controller="AppCtrl">
-  	  <input type="text" ng-model="api.q" placeholder="Search" />
-  	  <button ng-click="makeCall(api.q)" class="btn btn-primary">Search</button>
-      <p>Sort By</p>
-      <select ng-model="orderProp">
-        <option value="title">Alphabetical</option>
-        <option value="date_created">Newest</option>
-      </select>
-  	  <input type="text" ng-model="query" placeholder="Filter">
+  	  <div class="span12">
+        <input type="text" ng-model="search" placeholder="Search" />
+        <select ng-model="orderProp">
+          <option value="title">Alphabetical</option>
+          <option value="date_created">Newest</option>
+        </select>
+  	   <input type="text" ng-model="query" placeholder="Filter">
+      </div>
   	  <ul class="media-list">
         <li class="media" ng-repeat="item in api.results | filter:query | orderBy:orderProp">
   		    <a class="pull-left" href="{{item.permalink}}">
