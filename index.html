@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="ttsApp">
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400">
+    <script src="js/main.js"></script>
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+  	<div class="container" ng-controller="AppCtrl">
+  	  <input type="text" ng-model="api.q" placeholder="Search" />
+  	  <button ng-click="makeCall(api.q)" class="btn btn-primary">Search</button>
+      <p>Sort By</p>
+      <select ng-model="orderProp">
+        <option value="title">Alphabetical</option>
+        <option value="date_created">Newest</option>
+      </select>
+  	  <input type="text" ng-model="query" placeholder="Filter">
+  	  <ul class="media-list">
+        <li class="media" ng-repeat="item in api.results | filter:query | orderBy:orderProp">
+  		    <a class="pull-left" href="{{item.permalink}}">
+            <img class="media-object" src="{{item.thumbnail}}" />
+          </a>
+          <div class="media-body">
+            <h6 class="media-heading">{{item.title}}</h6>
+            <cite>www.mercadolibre.com</cite>
+            <div class="media">
+              <!-- <span>{{item.subtitle}}</span> -->
+            </div>
+          </div>
+		    </li>
+  	  </ul>
+  	</div>
+  </body>
+</html>
